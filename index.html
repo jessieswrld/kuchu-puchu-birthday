@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Favourite Girl 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+    --pink: #ffe6ef;
+    --deep: #c94f7c;
+    --dark: #75364f;
+    --cream: #fffafd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(145deg, #fff5f9, #ffe0eb, #fff1f6);
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 35px 20px;
+    position: relative;
+}
+
+.card {
+    width: min(100%, 650px);
+    padding: 55px 25px;
+    background: #ffffffc9;
+    border: 1px solid #ffffff;
+    border-radius: 32px;
+    box-shadow: 0 20px 70px #d9799b20;
+    animation: appear 1s ease both;
+}
+
+.eyebrow {
+    color: var(--deep);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.flower {
+    font-size: 43px;
+    margin: 20px 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+h1 {
+    font-size: clamp(38px, 8vw, 64px);
+    line-height: 1.12;
+    margin: 15px 0;
+    color: #b93e70;
+}
+
+p {
+    line-height: 1.9;
+}
+
+.intro {
+    max-width: 430px;
+    margin: 20px auto 30px;
+    font-size: 16px;
+}
+
+.button {
+    display: inline-block;
+    background: linear-gradient(135deg, #ed8fb0, #c94f7c);
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 30px;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 8px 20px #c94f7c30;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px #c94f7c40;
+}
+
+section {
+    padding: 75px 20px;
+    text-align: center;
+}
+
+.section-inner {
+    max-width: 850px;
+    margin: auto;
+}
+
+h2 {
+    color: #b93e70;
+    font-size: clamp(30px, 6vw, 43px);
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    max-width: 500px;
+    margin: 0 auto 35px;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 35px;
+}
+
+.memory {
+    background: #ffffffc9;
+    padding: 12px 12px 20px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px #d9799b12;
+    transform: rotate(-1deg);
+}
+
+.memory:nth-child(2) {
+    transform: rotate(1.5deg);
+}
+
+.memory:nth-child(3) {
+    transform: rotate(-.5deg);
+}
+
+.photo-placeholder {
+    min-height: 180px;
+    background: linear-gradient(145deg, #ffe5ef, #f8c3d7);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 43px;
+}
+
+.memory p {
+    margin: 14px 0 0;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+.memory img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+.letter-section {
+    padding-top: 40px;
+    padding-bottom: 100px;
+}
+
+.envelope {
+    max-width: 580px;
+    margin: 30px auto 0;
+    padding: 35px 25px;
+    background: #fffafd;
+    border: 1px solid #f9c8da;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px #d9799b20;
+}
+
+#loveLetter {
+    display: none;
+    text-align: left;
+    margin-top: 25px;
+    padding: 25px;
+    background: #fff0f6;
+    border-radius: 18px;
+    animation: appear .6s ease both;
+}
+
+#loveLetter.show {
+    display: block;
+}
+
+.signature {
+    text-align: right;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    color: var(--deep);
+}
+
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    background: #ffffff75;
+    font-size: 13px;
+}
+
+.heart {
+    position: fixed;
+    bottom: -40px;
+    pointer-events: none;
+    z-index: 5;
+    animation: rise linear forwards;
+}
+.countdown-box {
+    margin: 30px auto 0;
+    padding: 20px 15px;
+    max-width: 460px;
+    background: #fff0f6;
+    border: 1px solid #ffd0e0;
+    border-radius: 22px;
+}
+
+.countdown-title {
+    margin: 0 0 18px;
+    color: #b93e70;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.countdown-item {
+    flex: 1;
+    padding: 14px 5px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px #d9799b15;
+}
+
+.countdown-item span {
+    display: block;
+    color: #c94f7c;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.countdown-item small {
+    display: block;
+    margin-top: 5px;
+    color: #96647a;
+    font-size: 11px;
+}
+
+.countdown-note {
+    margin: 18px 0 0;
+    font-size: 13px;
+    color: #96647a;
+}
+@keyframes rise {
+    to {
+        transform: translateY(-115vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    50% { transform: translateY(-9px) rotate(4deg); }
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .card { padding: 40px 20px; }
+    .memory-grid { grid-template-columns: 1fr; max-width: 330px; margin: 30px auto; }
+    .photo-placeholder { min-height: 220px; }
+    section { padding: 55px 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<main>
+    <section class="hero">
+        <div class="card">
+            <div class="eyebrow">A little surprise for someone special</div>
+            <div class="flower">🌷 💗 🌷</div>
+            <h1>Happy Birthday,<br>My Kuchu Puchu! 💗</h1>
+            <p class="intro">
+                To the girl who makes my world softer, brighter,
+                and so much more beautiful. Today is all about you. 💕
+            </p>
+            <a class="button" href="#memories">Open your little surprise ✨</a>
+            <div class="countdown-box">
+    <p class="countdown-title">Counting down to your special day 💗</p>
+
+    <div class="countdown">
+        <div class="countdown-item">
+            <span id="days">00</span>
+            <small>Days</small>
+        </div>
+        <div class="countdown-item">
+            <span id="hours">00</span>
+            <small>Hours</small>
+        </div>
+        <div class="countdown-item">
+            <span id="minutes">00</span>
+            <small>Minutes</small>
+        </div>
+        <div class="countdown-item">
+            <span id="seconds">00</span>
+            <small>Seconds</small>
+        </div>
+    </div>
+
+    <p class="countdown-note">Until November 18, 2026 🌷</p>
+</div>
+        </div>
+    </section>
+
+    <section id="memories">
+        <div class="section-inner">
+            <div class="eyebrow">Little moments, endless love</div>
+            <h2>My favourite memories 💗</h2>
+            <p class="subtitle">
+                Every moment with you becomes something I want to keep forever.
+                These little spaces are waiting for our favourite pictures.
+            </p>
+
+            <div class="memory-grid">
+
+    <div class="memory">
+        <img src="images/photo1.jpeg" alt="My favourite girl">
+        <p>My favourite smile 💗</p>
+    </div>
+
+    <div class="memory">
+        <img src="images/photo7.jpeg" alt="A beautiful memory">
+        <p>Our sweetest moments 🌷</p>
+    </div>
+
+    <div class="memory">
+        <img src="images/photo2.jpeg" alt="A special memory">
+        <p>My pretty girl 🎀</p>
+    </div>
+
+    <div class="memory">
+        <img src="images/photo3.jpeg" alt="A memory together">
+        <p>Just you and me 💕</p>
+    </div>
+
+    <div class="memory">
+        <img src="images/photo5.jpeg" alt="A moment to treasure">
+        <p>My happy place 🥹</p>
+    </div>
+
+    <div class="memory">
+        <img src="images/photo8.jpeg" alt="A favourite photo">
+        <p>Forever my favourite ❤️</p>
+    </div>
+
+</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="letter-section">
+        <div class="section-inner">
+            <div class="eyebrow">Written with all my heart</div>
+            <h2>A little letter for you 💌</h2>
+            <p class="subtitle">
+                There's something I want you to know, today and always.
+            </p>
+
+            <div class="envelope">
+                <div style="font-size: 38px;">💌</div>
+                <p>Someone has a little something to tell you...</p>
+                <button class="button" id="letterButton" onclick="revealLetter()">
+                    Open my letter 💗
+                </button>
+
+                <div id="loveLetter">
+    <p>My Kuchu Puchu, 🤭💗</p>
+
+    <p>
+        Happy birthday, my baby, my favourite person, and my sweetest blessing. 🌷
+    </p>
+
+    <p>
+        I wish you could see yourself through my eyes, even for just a moment.
+        Maybe then you'd understand why your smile has such a special place in
+        my heart, why the smallest things you do make me so happy, and why even
+        your little weird dances are some of the cutest things in the world to me. 😭❤️
+    </p>
+
+    <p>
+        I love your personality, your beautiful heart, and the way you love me
+        so deeply and make sure I feel it. You make me feel loved in ways I
+        can't always explain, and I hope I make you feel just as special,
+        safe, cherished, and adored as you make me feel.
+    </p>
+
+    <p>
+        It's not just the big things I love about you. It's the little things,
+        too. Your smile, your silliness, your heart, the way you express your
+        love, and all those tiny pieces of you that make you YOU.
+        If I had to choose all over again, I'd still want to know you,
+        love you, laugh with you, and make beautiful memories with you.
+    </p>
+
+    <p>
+        As you turn another year older, I pray this new chapter brings you
+        happiness, peace, beautiful opportunities, answered prayers, and
+        every lovely thing your heart desires. I hope life is gentle with you,
+        that you never forget how precious you are, and that you always have
+        reasons to smile that big, beautiful smile of yours.
+    </p>
+
+    <p>
+        Thank you for being my Kuchu Puchu. Thank you for being you.
+        And thank you for loving me the way you do.
+    </p>
+
+    <p>
+        Happy birthday, my baby. I hope this little website reminds you
+        that somewhere in this world, there is someone who thinks you're
+        incredibly special and is so, so happy to have you. 🥹💗
+    </p>
+
+    <p class="signature">
+        I love you, my Kuchu Puchu. Today, tomorrow, and through all the
+        little weird dances still waiting for us. 🤭💕
+    </p>
+</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    Made with love, just for you 💗
+</footer>
+
+<script>
+function revealLetter() {
+    const letter = document.getElementById('loveLetter');
+    const button = document.getElementById('letterButton');
+
+    letter.classList.toggle('show');
+
+    if (letter.classList.contains('show')) {
+        button.textContent = 'Close my letter 💗';
+        letter.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+        button.textContent = 'Open my letter 💗';
+    }
+}
+
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.textContent = ['💗', '💕', '♡', '🌸'][Math.floor(Math.random() * 4)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (14 + Math.random() * 16) + 'px';
+    heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(createHeart, 850);
+function updateCountdown() {
+    const birthday = new Date(2026, 10, 18, 0, 0, 0).getTime();
+    const now = Date.now();
+    const difference = birthday - now;
+
+    if (difference <= 0) {
+        document.querySelector(".countdown-box").innerHTML =
+            "<h2>Happy Birthday, My Love! 🎂💗</h2>";
+        return;
+    }
+
+    document.getElementById("days").textContent =
+        Math.floor(difference / (1000 * 60 * 60 * 24))
+            .toString().padStart(2, "0");
+
+    document.getElementById("hours").textContent =
+        Math.floor((difference / (1000 * 60 * 60)) % 24)
+            .toString().padStart(2, "0");
+
+    document.getElementById("minutes").textContent =
+        Math.floor((difference / (1000 * 60)) % 60)
+            .toString().padStart(2, "0");
+
+    document.getElementById("seconds").textContent =
+        Math.floor((difference / 1000) % 60)
+            .toString().padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
